@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import axios from 'axios'
 import { HiOutlineSearch } from 'react-icons/hi'
@@ -5,7 +6,7 @@ import MovieCard from './MovieCard'
 
 const API_KEY = import.meta.env.VITE_API_KEY
 
-const SearchBar = () => {
+const SearchBar = ({ onAddMovie }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
 
@@ -26,9 +27,14 @@ const SearchBar = () => {
         console.log(error)
       }
     } else {
-        setSearchResults([])
+      setSearchResults([])
     }
   }
+
+  const handleAddToMovieList = (movie) => {
+    onAddMovie(movie)
+  }
+
   return (
     <section className='flex flex-col w-full p-4 items-center justify-center '>
       <div className='flex lg:w-1/2 w-full items-center justify-center border-2 border-black px-3 rounded-md sticky top-0 bg-white'>
@@ -46,11 +52,20 @@ const SearchBar = () => {
           {searchResults && searchResults.length > 0 ? (
             searchResults.map((item, i) => (
               <li key={i}>
-                <MovieCard title={item.title} />
+                <MovieCard
+                  title={item.title}
+                  handleClick={() =>
+                    handleAddToMovieList({
+                      title: item.title,
+                      rating: 0,
+                      release_date: item.release_date,
+                    })
+                  }
+                />
               </li>
             ))
           ) : (
-            <p>No Results Found</p>
+            <p>No Movies Found</p>
           )}
         </ul>
       </div>
