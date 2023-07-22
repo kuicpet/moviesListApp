@@ -1,3 +1,5 @@
+import Button from './Button'
+
 /* eslint-disable react/prop-types */
 const MovieCard = ({ title, handleClick }) => {
   return (
@@ -5,11 +7,7 @@ const MovieCard = ({ title, handleClick }) => {
       <div className='flex items-center justify-between w-full'>
         <h2 className='font-semibold capitalize'>{title}</h2>
         <div className='mx-1'>
-          <button
-            onClick={handleClick}
-            className='border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'>
-            Add Movie
-          </button>
+          <Button onClick={handleClick} title='Add Movie' />
         </div>
       </div>
     </div>
