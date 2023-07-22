@@ -4,18 +4,18 @@ import { Header, Footer } from './components'
 
 function App() {
   return (
-    <div>
+    <>
       <div>
         <Header />
-        <div>
+        <main className='sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-90px)]'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route exact path='/movielist' element={<MovieList />} />
+            <Route exact path='/movie-list' element={<MovieList />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
-    </div>
+    </>
   )
 }
 
