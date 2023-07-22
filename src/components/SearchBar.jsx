@@ -20,7 +20,7 @@ const SearchBar = ({ onAddMovie }) => {
             `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
           )
           .then((response) => {
-            console.log(response)
+            // console.log(response)
             setSearchResults(response?.data?.results)
           })
       } catch (error) {
@@ -59,6 +59,7 @@ const SearchBar = ({ onAddMovie }) => {
                       title: item.title,
                       rating: 0,
                       release_date: item.release_date,
+                      watched: false,
                     })
                   }
                 />

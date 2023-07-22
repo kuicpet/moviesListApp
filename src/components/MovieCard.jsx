@@ -7,13 +7,15 @@ const MovieCard = ({
   clickable,
   btnTitle,
   handlebtnClick,
+  releaseDate,
 }) => {
   return (
     <div className='border border-black m-1 w-full flex items-center justify-start p-2 rounded-md'>
       <div
-        className='flex items-center justify-between w-full cursor-pointer'
+        className='flex flex-col items-start justify-between w-full cursor-pointer'
         onClick={handleClick}>
         <h2 className='font-semibold capitalize'>{title}</h2>
+        <p>{releaseDate ? `Release Year : ${releaseDate}` : ''}</p>
       </div>
       {clickable && <Button title={btnTitle} onClick={handlebtnClick} />}
     </div>

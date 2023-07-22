@@ -14,3 +14,9 @@ body {
 .smooth-transition {
   transition: all 0.3s ease-in-out;
 }
+
+.grid-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+}

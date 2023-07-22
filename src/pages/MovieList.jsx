@@ -5,7 +5,7 @@ import useMovieStore from '../store/movieStore'
 
 const MovieList = () => {
   const { moviesList, removeFromMovieList } = useMovieStore()
-  
+
   const removeMovie = (movie) => {
     removeFromMovieList(movie)
   }
@@ -17,7 +17,7 @@ const MovieList = () => {
         <h2 className='font-semibold'>MovieList</h2>
       </div>
       <div className='flex flex-col border-2 border-black rounded-md lg:w-1/2 w-full m-2 p-2'>
-        <ul>
+        <ul className=''>
           {moviesList && moviesList.length > 0 ? (
             moviesList.map((item, i) => (
               <li className='flex items-center w-full justify-between' key={i}>
@@ -26,6 +26,7 @@ const MovieList = () => {
                   clickable
                   btnTitle='Remove'
                   handlebtnClick={() => removeMovie(item)}
+                  releaseDate={item.release_date}
                 />
               </li>
             ))
