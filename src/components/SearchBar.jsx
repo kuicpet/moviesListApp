@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { HiOutlineSearch } from 'react-icons/hi'
+import MovieCard from './MovieCard'
+
+const API_KEY = import.meta.env.VITE_API_KEY
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('')
-  // const [searchResults, setSearchResults] = useState([])
-  const API_KEY = import.meta.env.VITE_API_KEY
+  const [searchResults, setSearchResults] = useState([])
 
   const handleSearch = async (e) => {
     const query = e.target.value
@@ -18,15 +20,18 @@ const SearchBar = () => {
           )
           .then((response) => {
             console.log(response)
+            setSearchResults(response?.data?.results)
           })
       } catch (error) {
         console.log(error)
       }
+    } else {
+        setSearchResults([])
     }
   }
   return (
-    <section className='flex w-full border border-black p-4 items-center justify-center'>
-      <div className='flex lg:w-1/2 w-full items-center justify-center border-2 border-black px-3 rounded-md'>
+    <section className='flex flex-col w-full p-4 items-center justify-center '>
+      <div className='flex lg:w-1/2 w-full items-center justify-center border-2 border-black px-3 rounded-md sticky top-0 bg-white'>
         <HiOutlineSearch className='text-xl' />
         <input
           className='border-none outline-none w-full py-2 px-3 rounded-md font-semibold'
@@ -35,6 +40,19 @@ const SearchBar = () => {
           value={searchQuery}
           onChange={handleSearch}
         />
+      </div>
+      <div className='flex flex-col border-2 border-black rounded-md lg:w-1/2 w-full m-2 p-2'>
+        <ul>
+          {searchResults && searchResults.length > 0 ? (
+            searchResults.map((item, i) => (
+              <li key={i}>
+                <MovieCard title={item.title} />
+              </li>
+            ))
+          ) : (
+            <p>No Results Found</p>
+          )}
+        </ul>
       </div>
     </section>
   )

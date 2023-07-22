@@ -1,11 +1,10 @@
 import { SearchBar } from '../components'
 const Home = () => {
   return (
-    <div className='border border-black'>
+    <div className=''>
       <div>
         <SearchBar />
       </div>
-      Home
     </div>
   )
 }
