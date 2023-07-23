@@ -1,4 +1,5 @@
 import { AiFillDelete } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 import Button from './Button'
 import useMovieStore from '../store/movieStore'
 import Rating from './Rating'
@@ -14,6 +15,8 @@ const MovieCard = ({
   rating,
   handleRating,
   handleWatchedChange,
+ //  movieId,
+  slug
 }) => {
   const { moviesList } = useMovieStore()
   const isAdded = moviesList.some((m) => m.title === title)
@@ -31,18 +34,7 @@ const MovieCard = ({
         {retable && (
           <div className=''>
             <div className=''>
-              {/*<input
-                type='number'
-                min='1'
-                max='5'
-                value={rating}
-                className='border border-black'
-                onChange={(e) => handleRating(parseInt(e.target.value))}
-        />*/}
-              <Rating
-                initialRating={rating}
-                onChange={handleRating}
-              />
+              <Rating initialRating={rating} onChange={handleRating} />
             </div>
             <div>
               <label className='flex justify-center items-center space-x-2 cursor-pointer px-2'>
@@ -54,6 +46,9 @@ const MovieCard = ({
                 />
                 <span className='text-sm'> Watched</span>
               </label>
+            </div>
+            <div>
+              <Link to={`/${slug}`}>Movie details</Link>
             </div>
           </div>
         )}

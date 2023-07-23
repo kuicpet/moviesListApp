@@ -7,6 +7,7 @@ import MovieCard from './MovieCard'
 import Button from './Button'
 import ToggleSwitch from './ToggleSwitch'
 import Rating from './Rating'
+import BreadCrumb from './BreadCrumb'
 
 export {
   Loader,
@@ -17,5 +18,6 @@ export {
   MovieCard,
   Button,
   ToggleSwitch,
-  Rating
+  Rating,
+  BreadCrumb,
 }

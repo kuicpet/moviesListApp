@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Home, MovieList } from './pages'
+import { Home, MovieList, Movie } from './pages'
 import { Header, Footer } from './components'
 
 function App() {
@@ -9,8 +9,9 @@ function App() {
         <Header />
         <main className='sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-90px)]'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route exact path='/' element={<Home />} />
             <Route exact path='/movie-list' element={<MovieList />} />
+            <Route exact path='/:slug' element={<Movie />} />
           </Routes>
         </main>
         <Footer />

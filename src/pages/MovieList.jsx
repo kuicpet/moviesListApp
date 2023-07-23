@@ -48,14 +48,16 @@ const MovieList = () => {
             filteredMoviesList.map((item, i) => (
               <li className='flex items-center w-full justify-between' key={i}>
                 <MovieCard
-                  title={item.title}
+                  // movieId={item?.id}
+                  slug={item?.title}
+                  title={item?.title}
                   clickable
                   retable
                   handlebtnClick={() => removeMovie(item)}
-                  releaseDate={item.release_date}
+                  releaseDate={item?.release_date}
                   handleWatchedChange={() => markedAsWatched(item)}
                   handleRating={(newRating) => handleAddRating(item, newRating)}
-                  rating={item.rating}
+                  rating={item?.rating}
                 />
               </li>
             ))

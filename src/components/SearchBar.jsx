@@ -56,6 +56,7 @@ const SearchBar = ({ onAddMovie }) => {
                   title={item.title}
                   handleClick={() =>
                     handleAddToMovieList({
+                      movieId: item.id,
                       title: item.title,
                       rating: 0,
                       release_date: item.release_date,
