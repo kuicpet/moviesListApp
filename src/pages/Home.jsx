@@ -3,37 +3,21 @@ import { SearchBar } from '../components'
 import useMovieStore from '../store/movieStore'
 
 const Home = () => {
-  // const movies = useMovieStore((state) => state.moviesList)
-  // const addMovies = useMovieStore((state) => state.addToMoviesList())
-  // const [movies, setMovies] = useState([])
-
   const { addToMoviesList, moviesList } = useMovieStore()
+
+  // add movies to movielist
   const addMovies = (movie) => {
     const existingMovie = moviesList.find(
       (m) => m.title.toLowerCase() === movie.title.toLowerCase()
     )
     if (!existingMovie) {
       addToMoviesList(movie)
-      toast.success('Movie added to MovieList Succesfully')
+      toast.success(`${movie.title} added to MovieList successfully`)
     } else {
-      toast.error('Movie Already added to MovieList')
+      toast.error(`${movie.title} already added to MovieList`)
       return
     }
   }
-  /*const addMovies = (movie) => {
-    const existingMovie = movies.find(
-      (m) => m.title.toLowerCase() === movie.title.toLowerCase()
-    )
-
-    if (!existingMovie) {
-      setMovies([...movies, movie])
-      toast.success('Movie added to MovieList Succesfully')
-      // Save updated movielist data to localStorage
-      localStorage.setItem('moviesList', JSON.stringify([...movies, movie]))
-    } else {
-      toast.error('Movie Already added to MovieList')
-    }
-  }*/
 
   return (
     <div className=''>
