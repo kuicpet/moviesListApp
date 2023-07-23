@@ -5,5 +5,15 @@ import Footer from './Footer'
 import SearchBar from './SearchBar'
 import MovieCard from './MovieCard'
 import Button from './Button'
+import ToggleSwitch from './ToggleSwitch'
 
-export { Loader, Error, Header, Footer, SearchBar, MovieCard, Button }
+export {
+  Loader,
+  Error,
+  Header,
+  Footer,
+  SearchBar,
+  MovieCard,
+  Button,
+  ToggleSwitch,
+}
