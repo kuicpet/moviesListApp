@@ -9,10 +9,10 @@ const movieStore = (set) => ({
     set((state) => ({
       moviesList: state.moviesList.filter((m) => m.title !== movie.title),
     })),
-  rateMovie: (movieToUpdate, rating) =>
+  rateMovie: (movie, rating) =>
     set((state) => {
-      const updatedMoviesList = state.moviesList.map((movie) =>
-        movie.title === movieToUpdate.title ? { ...movie, rating } : movie
+      const updatedMoviesList = state.moviesList.map((m) =>
+        m.title === movie.title ? { ...m, rating } : m
       )
       return { moviesList: updatedMoviesList }
     }),

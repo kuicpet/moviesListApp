@@ -5,7 +5,8 @@ import { MovieCard, ToggleSwitch } from '../components'
 import useMovieStore from '../store/movieStore'
 
 const MovieList = () => {
-  const { moviesList, removeFromMovieList, toggleWatched } = useMovieStore()
+  const { moviesList, removeFromMovieList, toggleWatched, rateMovie } =
+    useMovieStore()
   const [showMatchedMovies, seTshowMatchedMovies] = useState(false)
 
   const removeMovie = (movie) => {
@@ -18,6 +19,10 @@ const MovieList = () => {
 
   const handleWatchedMovies = () => {
     seTshowMatchedMovies(!showMatchedMovies)
+  }
+
+  const handleAddRating = (movie, newRating) => {
+    rateMovie(movie, newRating)
   }
 
   const filteredMoviesList = showMatchedMovies
@@ -49,6 +54,8 @@ const MovieList = () => {
                   handlebtnClick={() => removeMovie(item)}
                   releaseDate={item.release_date}
                   handleWatchedChange={() => markedAsWatched(item)}
+                  handleRating={(newRating) => handleAddRating(item, newRating)}
+                  rating={item.rating}
                 />
               </li>
             ))
