@@ -27,24 +27,24 @@ const MovieCard = ({
         <h2 className='font-semibold capitalize'>{title}</h2>
         <p>{releaseDate ? `Release Year : ${releaseDate}` : ''}</p>
         {retable && (
-          <>
-            <label>
-              <input
-                className='mx-1'
-                type='checkbox'
-                checked={title.watched}
-                onChange={() => handleWatchedChange()}
-              />
-              Watched
-            </label>
-          </>
+          <label className='flex justify-center items-center space-x-2 cursor-pointer px-2'>
+            <input
+              className='mx-1 form-checkbox h-3 w-4 text-blue-500 focus:ring-blue-400 focus:border-blue-400 border border-gray-300 rounded'
+              type='checkbox'
+              checked={title.watched}
+              onChange={() => handleWatchedChange()}
+            />
+            <span className='text-sm'> Watched</span>
+          </label>
         )}
       </div>
       {clickable && (
         <Button
           title={btnTitle}
           onClick={handlebtnClick}
-          icon={<AiFillDelete className='text-2xl text-[gray] hover:text-[red]' />}
+          icon={
+            <AiFillDelete className='text-2xl text-[gray] hover:text-[red]' />
+          }
         />
       )}
     </div>
