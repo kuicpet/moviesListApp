@@ -16,10 +16,11 @@ const movieStore = (set) => ({
       )
       return { moviesList: updatedMoviesList }
     }),
-  toggleWatched: (index) =>
+  toggleWatched: (movie) =>
     set((state) => {
-      const updatedMoviesList = [...state.moviesList]
-      updatedMoviesList[index].watched = !updatedMoviesList[index].watched
+      const updatedMoviesList = state.moviesList.map((m) =>
+        m.title === movie.title ? { ...m, watched: !m.watched } : m
+      )
       return { moviesList: updatedMoviesList }
     }),
 })

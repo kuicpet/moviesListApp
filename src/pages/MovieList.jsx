@@ -4,10 +4,14 @@ import MovieCard from '../components/MovieCard'
 import useMovieStore from '../store/movieStore'
 
 const MovieList = () => {
-  const { moviesList, removeFromMovieList } = useMovieStore()
+  const { moviesList, removeFromMovieList, toggleWatched } = useMovieStore()
 
   const removeMovie = (movie) => {
     removeFromMovieList(movie)
+  }
+
+  const markedAsWatched = (movie) => {
+    toggleWatched(movie)
   }
 
   return (
@@ -24,9 +28,11 @@ const MovieList = () => {
                 <MovieCard
                   title={item.title}
                   clickable
+                  retable
                   btnTitle='Remove'
                   handlebtnClick={() => removeMovie(item)}
                   releaseDate={item.release_date}
+                  handleWatchedChange={() => markedAsWatched(item)}
                 />
               </li>
             ))
