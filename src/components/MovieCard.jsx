@@ -1,3 +1,4 @@
+import { AiFillDelete } from 'react-icons/ai'
 import Button from './Button'
 import useMovieStore from '../store/movieStore'
 /* eslint-disable react/prop-types */
@@ -39,7 +40,13 @@ const MovieCard = ({
           </>
         )}
       </div>
-      {clickable && <Button title={btnTitle} onClick={handlebtnClick} />}
+      {clickable && (
+        <Button
+          title={btnTitle}
+          onClick={handlebtnClick}
+          icon={<AiFillDelete className='text-2xl text-[gray] hover:text-[red]' />}
+        />
+      )}
     </div>
   )
 }

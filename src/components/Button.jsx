@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
-const Button = ({ title, onClick }) => {
+const Button = ({ title, onClick, icon }) => {
   return (
     <button
-      className='border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'
+      className={
+        icon
+          ? ''
+          : 'border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'
+      }
       onClick={onClick}>
+      <span>{icon}</span>
       {title}
     </button>
   )
