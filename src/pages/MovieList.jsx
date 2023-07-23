@@ -26,7 +26,7 @@ const MovieList = () => {
 
   return (
     <section className='flex flex-col p-4 items-center justify-center'>
-      <div className='flex lg:w-1/2 w-full items-center justify-between border-2 border-black py-2 px-3 rounded-md sticky top-0 bg-white'>
+      <div className='flex lg:flex-row md:flex-row flex-col lg:w-1/2 w-full items-center justify-between border-2 border-black py-2 px-3 rounded-md sticky top-0 bg-white'>
         <span className='flex items-center justify-center'>
           <PiTelevisionSimpleDuotone className='text-xl mx-2' />
           <h2 className='font-semibold'>MovieList</h2>
