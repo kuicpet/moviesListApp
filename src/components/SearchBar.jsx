@@ -3,18 +3,21 @@ import { useState } from 'react'
 import axios from 'axios'
 import { HiOutlineSearch } from 'react-icons/hi'
 import MovieCard from './MovieCard'
+import Loader from './Loader'
 
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const SearchBar = ({ onAddMovie }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleSearch = async (e) => {
     const query = e.target.value
     setSearchQuery(query)
     if (query.trim() !== '') {
       try {
+        setLoading(true)
         await axios
           .get(
             `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
@@ -22,9 +25,12 @@ const SearchBar = ({ onAddMovie }) => {
           .then((response) => {
             // console.log(response)
             setSearchResults(response?.data?.results)
+            setLoading(false)
           })
       } catch (error) {
         console.log(error)
+      } finally {
+        setLoading(false)
       }
     } else {
       setSearchResults([])
@@ -37,6 +43,11 @@ const SearchBar = ({ onAddMovie }) => {
 
   return (
     <section className='flex flex-col w-full p-4 items-center justify-center '>
+      {loading && (
+        <div className='absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg'>
+          <Loader />
+        </div>
+      )}
       <div className='flex lg:w-1/2 w-full items-center justify-center border-2 border-black px-3 rounded-md sticky top-0 bg-white'>
         <HiOutlineSearch className='text-xl' />
         <input

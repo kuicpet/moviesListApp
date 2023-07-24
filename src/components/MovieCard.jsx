@@ -44,13 +44,13 @@ const MovieCard = ({
                 <input
                   className='mx-1 form-checkbox h-3 w-4 text-blue-500 focus:ring-blue-400 focus:border-blue-400 border border-gray-300 rounded'
                   type='checkbox'
-                  checked={rating.watched}
+                  checked={title.watched}
                   onChange={() => handleWatchedChange()}
                 />
                 <span className='text-sm'> Watched</span>
               </label>
             </div>
-            <div>
+            <div className='border-2 border-black px-2 rounded-md cursor-pointer hover:bg-black hover:text-white my-2'>
               <Link to={`/${slug}`}>Movie details</Link>
             </div>
           </div>
