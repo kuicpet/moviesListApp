@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Button from './Button'
 import useMovieStore from '../store/movieStore'
 import Rating from './Rating'
+import { formatTimestamp } from '../utils/formatTime'
 /* eslint-disable react/prop-types */
 const MovieCard = ({
   title,
@@ -15,8 +16,8 @@ const MovieCard = ({
   rating,
   handleRating,
   handleWatchedChange,
- //  movieId,
-  slug
+  //  movieId,
+  slug,
 }) => {
   const { moviesList } = useMovieStore()
   const isAdded = moviesList.some((m) => m.title === title)
@@ -30,7 +31,9 @@ const MovieCard = ({
         className='flex flex-col items-start justify-between w-full cursor-pointer'
         onClick={handleClick}>
         <h2 className='font-semibold capitalize'>{title}</h2>
-        <p>{releaseDate ? `Release Year : ${releaseDate}` : ''}</p>
+        <p>
+          {releaseDate ? `Release Year : ${formatTimestamp(releaseDate)}` : ''}
+        </p>
         {retable && (
           <div className=''>
             <div className=''>
