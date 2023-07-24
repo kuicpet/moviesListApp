@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Home, MovieList, Movie } from './pages'
+import { Home, MovieList, Movie, NotFound } from './pages'
 import { Header, Footer } from './components'
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/movie-list' element={<MovieList />} />
             <Route exact path='/:slug' element={<Movie />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
