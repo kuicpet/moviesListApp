@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         <Header />
-        <main className='sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-90px)]'>
+        <main className=' w-full min-h-[calc(100vh-90px)]'>
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/movie-list' element={<MovieList />} />

@@ -20,9 +20,9 @@ const Home = () => {
   }
 
   return (
-    <div className=''>
+    <div className='w-full'>
       <Toaster />
-      <div>
+      <div className='w-full'>
         <SearchBar onAddMovie={addMovies} />
       </div>
     </div>

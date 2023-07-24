@@ -24,7 +24,7 @@ const MovieCard = ({
 
   return (
     <div
-      className={`border border-black m-1 w-full flex items-center justify-start p-2 rounded-md ${
+      className={`border-2 border-white m-1 w-full flex items-center justify-start p-2 rounded-md ${
         isAdded ? 'border-[green]' : ''
       }`}>
       <div
@@ -50,7 +50,7 @@ const MovieCard = ({
                 <span className='text-sm'> Watched</span>
               </label>
             </div>
-            <div className='border-2 border-black px-2 rounded-md cursor-pointer hover:bg-black hover:text-white my-2'>
+            <div className='border-2 border-[orange] px-2 rounded-md cursor-pointer hover:bg-[orange] hover:text-black text-[orange] my-2'>
               <Link to={`/${slug}`}>Movie details</Link>
             </div>
           </div>
@@ -61,7 +61,7 @@ const MovieCard = ({
           title={btnTitle}
           onClick={handlebtnClick}
           icon={
-            <AiFillDelete className='text-2xl text-[gray] hover:text-[red]' />
+            <AiFillDelete className='mx-2 text-2xl text-white hover:text-[red]' title='Remove From MoviesList' />
           }
         />
       )}

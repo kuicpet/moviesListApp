@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { PiTelevisionSimpleDuotone } from 'react-icons/pi'
 import { MovieCard, ToggleSwitch } from '../components'
 import useMovieStore from '../store/movieStore'
+import BgImg from '../assets/flash_img.jpg'
 
 const MovieList = () => {
   const { moviesList, removeFromMovieList, toggleWatched, rateMovie } =
@@ -30,19 +31,23 @@ const MovieList = () => {
     : moviesList
 
   return (
-    <section className='flex flex-col p-4 items-center justify-center'>
-      <div className='flex lg:flex-row md:flex-row  lg:w-1/2 w-full items-center justify-between border-2 border-black py-2 px-3 rounded-md sticky top-0 bg-white'>
+    <section
+      style={{ '--image-url': `url(${BgImg})` }}
+      className={`flex flex-col p-4  items-center justify-start  bg-[image:var(--image-url)] bg-no-repeat bg-cover bg-center h-[100vh]`}>
+      <div className='flex lg:flex-row md:flex-row  lg:w-1/2 w-full items-center justify-between  py-2 px-3 rounded-md sticky top-0 bg-black border-2 text-white'>
         <span className='flex items-center justify-center'>
           <PiTelevisionSimpleDuotone className='text-xl mx-2' />
           <h2 className='font-semibold'>MovieList</h2>
         </span>
-        <ToggleSwitch
-          checked={showMatchedMovies}
-          onChange={handleWatchedMovies}
-          text={showMatchedMovies ? 'Watched Movies' : 'Show Watched Movies'}
-        />
+        {filteredMoviesList && filteredMoviesList.length > 0 && (
+          <ToggleSwitch
+            checked={showMatchedMovies}
+            onChange={handleWatchedMovies}
+            text={showMatchedMovies ? 'Watched Movies' : 'Show Watched Movies'}
+          />
+        )}
       </div>
-      <div className='flex flex-col border-2 border-black rounded-md lg:w-1/2 w-full m-2 p-2'>
+      <div className='flex flex-col  rounded-md lg:w-1/2 w-full m-2 p-2 bg-[rgba(0,0,0,0.8)] text-white border-2'>
         <ul className=''>
           {filteredMoviesList && filteredMoviesList.length > 0 ? (
             filteredMoviesList.map((item, i) => (
@@ -69,7 +74,7 @@ const MovieList = () => {
       <div>
         <Link
           to={`/`}
-          className='border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'>
+          className='border-2 border-white text-white px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'>
           Add More Movies
         </Link>
       </div>

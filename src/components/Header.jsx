@@ -3,15 +3,15 @@ import { PiTelevisionSimpleDuotone } from 'react-icons/pi'
 
 const Header = () => {
   return (
-    <header className='w-full flex justify-between items-center bg-white  px-4 py-2 border border-b-black lg:sticky lg:top-0'>
+    <header className='w-full flex justify-between items-center bg-black  px-4 py-2  lg:sticky lg:top-0'>
       <Link to={`/`} className='text-3xl'>
-        <PiTelevisionSimpleDuotone className='' />
+        <PiTelevisionSimpleDuotone className='text-white' />
       </Link>
       <NavLink
-        style={({ isActive }) => ({ color: isActive ? 'black' : 'gray' })}
+        style={({ isActive }) => ({ color: isActive ? 'white' : 'gray' })}
         to={`/movie-list`}
         className='font-semibold px-4 hover:text-black'>
-        Movies List
+        MovieList
       </NavLink>
     </header>
   )
