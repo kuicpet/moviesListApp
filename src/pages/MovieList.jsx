@@ -65,7 +65,7 @@ const MovieList = () => {
     <section
       style={{
         '--image-url': `url(${BASE_IMG_URL}${BACKDROP_SIZE}${image})`,
-        background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), var(--image-url)`,
+        background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--image-url)`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -78,7 +78,7 @@ const MovieList = () => {
           <PiTelevisionSimpleDuotone className='text-xl mx-2' />
           <h2 className='font-semibold'>MovieList</h2>
         </span>
-        {filteredMoviesList && filteredMoviesList.length > 0 && (
+        {filteredMoviesList  && (
           <ToggleSwitch
             checked={showMatchedMovies}
             onChange={handleWatchedMovies}
@@ -116,7 +116,7 @@ const MovieList = () => {
           )}
         </ul>
         <div className='flex w-full items-center justify-center'>
-          {moviesList &&  moviesList.length > 2 && (
+          { filteredMoviesList.length > 2 && moviesList &&  moviesList.length > 2 &&  (
             <Pagination>
               <Button
                 disabled={page <= 1}

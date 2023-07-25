@@ -24,12 +24,11 @@ const MovieCard = ({
 
   return (
     <div
+      onClick={handleClick}
       className={`border-2 border-white m-1 w-full flex items-center justify-start p-2 rounded-md ${
         isAdded ? 'border-[green]' : ''
       }`}>
-      <div
-        className='flex flex-col items-start justify-between w-full cursor-pointer'
-        onClick={handleClick}>
+      <div className='flex flex-col items-start justify-between w-full cursor-pointer '>
         <h2 className='font-semibold capitalize'>{title}</h2>
         <p>
           {releaseDate ? `Release Year : ${formatTimestamp(releaseDate)}` : ''}
@@ -61,7 +60,10 @@ const MovieCard = ({
           title={btnTitle}
           onClick={handlebtnClick}
           icon={
-            <AiFillDelete className='mx-2 text-2xl text-white hover:text-[red]' title='Remove From MoviesList' />
+            <AiFillDelete
+              className='mx-2 text-2xl text-white hover:text-[red]'
+              title='Remove From MoviesList'
+            />
           }
         />
       )}

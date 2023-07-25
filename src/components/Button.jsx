@@ -5,7 +5,7 @@ const Button = ({ title, onClick, icon, disabled }) => {
       className={
         icon
           ? ''
-          : 'flex items-center justify-center border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer w-full'
+          : 'flex items-center justify-center border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer w-full disabled:cursor-not-allowed'
       }
       onClick={onClick}
       disabled={disabled}>
