@@ -11,7 +11,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/movie-list' element={<MovieList />} />
-            <Route exact path='/:slug' element={<Movie />} />
+            <Route exact path='/movie/:slug' element={<Movie />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>

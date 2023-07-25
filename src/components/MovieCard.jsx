@@ -50,7 +50,7 @@ const MovieCard = ({
               </label>
             </div>
             <div className='border-2 border-[orange] px-2 rounded-md cursor-pointer hover:bg-[orange] hover:text-black text-[orange] my-2'>
-              <Link to={`/${slug}`}>Movie details</Link>
+              <Link to={`/movie/${slug}`}>Movie details</Link>
             </div>
           </div>
         )}
