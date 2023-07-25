@@ -7,12 +7,10 @@ import MovieCard from './MovieCard'
 import Loader from './Loader'
 import Pagination from './Pagination'
 import Button from './Button'
+import { API_KEY, BASE_IMG_URL, BACKDROP_SIZE } from '../config'
 // import BgImg from '../assets/flash_img.jpg'
 
-const PAGE_SIZE = 9
-const API_KEY = import.meta.env.VITE_API_KEY
-const BASE_IMG_URL = `https://image.tmdb.org/t/p/`
-const BACKDROP_SIZE = `w1280`
+const PAGE_SIZE = 8
 
 const SearchBar = ({ onAddMovie }) => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -55,7 +53,7 @@ const SearchBar = ({ onAddMovie }) => {
             `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
           )
           .then((response) => {
-            // console.log(response)
+            console.log(response)
             setSearchResults(response?.data?.results)
             setLoading(false)
           })

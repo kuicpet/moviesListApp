@@ -5,12 +5,10 @@ import { PiTelevisionSimpleDuotone } from 'react-icons/pi'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Button, MovieCard, Pagination, ToggleSwitch } from '../components'
 import useMovieStore from '../store/movieStore'
+import { API_KEY, BASE_IMG_URL, BACKDROP_SIZE } from '../config'
 //import BgImg from '../assets/flash_img.jpg'
 
 const PAGE_SIZE = 2
-const API_KEY = import.meta.env.VITE_API_KEY
-const BASE_IMG_URL = `https://image.tmdb.org/t/p/`
-const BACKDROP_SIZE = `w1280`
 
 const MovieList = () => {
   const { moviesList, removeFromMovieList, toggleWatched, rateMovie } =
@@ -21,26 +19,26 @@ const MovieList = () => {
   const pageCount = moviesList.length / PAGE_SIZE
   const steps = page * PAGE_SIZE - PAGE_SIZE
 
-   useEffect(() => {
-     const fetchData = async () => {
-       try {
-         await axios
-           .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-           .then((response) => {
-             // console.log(response?.data?.results[0]?.backdrop_path)
-             const randomIndex = Math.floor(
-               Math.random() * response.data.results.length
-             )
-             const randomMovie = response?.data?.results[randomIndex]
-             // console.log(randomMovie.backdrop_path)
-             setImage(randomMovie?.backdrop_path)
-           })
-       } catch (error) {
-         console.log(error)
-       }
-     }
-     fetchData()
-   }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await axios
+          .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+          .then((response) => {
+            // console.log(response?.data?.results[0]?.backdrop_path)
+            const randomIndex = Math.floor(
+              Math.random() * response.data.results.length
+            )
+            const randomMovie = response?.data?.results[randomIndex]
+            // console.log(randomMovie.backdrop_path)
+            setImage(randomMovie?.backdrop_path)
+          })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData()
+  }, [])
   const removeMovie = (movie) => {
     removeFromMovieList(movie)
   }
@@ -78,7 +76,7 @@ const MovieList = () => {
           <PiTelevisionSimpleDuotone className='text-xl mx-2' />
           <h2 className='font-semibold'>MovieList</h2>
         </span>
-        {filteredMoviesList  && (
+        {filteredMoviesList && (
           <ToggleSwitch
             checked={showMatchedMovies}
             onChange={handleWatchedMovies}
@@ -116,20 +114,22 @@ const MovieList = () => {
           )}
         </ul>
         <div className='flex w-full items-center justify-center'>
-          { filteredMoviesList.length > 2 && moviesList &&  moviesList.length > 2 &&  (
-            <Pagination>
-              <Button
-                disabled={page <= 1}
-                onClick={() => setPage((prev) => prev - 1)}
-                icon={<FaChevronLeft />}
-              />
-              <Button
-                disabled={page >= pageCount}
-                onClick={() => setPage((prev) => prev + 1)}
-                icon={<FaChevronRight />}
-              />
-            </Pagination>
-          )}
+          {filteredMoviesList.length > 2 &&
+            moviesList &&
+            moviesList.length > 2 && (
+              <Pagination>
+                <Button
+                  disabled={page <= 1}
+                  onClick={() => setPage((prev) => prev - 1)}
+                  icon={<FaChevronLeft />}
+                />
+                <Button
+                  disabled={page >= pageCount}
+                  onClick={() => setPage((prev) => prev + 1)}
+                  icon={<FaChevronRight />}
+                />
+              </Pagination>
+            )}
         </div>
       </div>
       <div>
