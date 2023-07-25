@@ -5,12 +5,12 @@ const Button = ({ title, onClick, icon, disabled }) => {
       className={
         icon
           ? ''
-          : 'border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer'
+          : 'flex items-center justify-center border-2 border-black px-2 rounded-md hover:bg-black hover:text-white cursor-pointer w-full'
       }
       onClick={onClick}
       disabled={disabled}>
       <span>{icon}</span>
-      {title}
+      <span>{title}</span>
     </button>
   )
 }

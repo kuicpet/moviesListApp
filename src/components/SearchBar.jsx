@@ -1,36 +1,48 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { HiOutlineSearch } from 'react-icons/hi'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import MovieCard from './MovieCard'
 import Loader from './Loader'
-import BgImg from '../assets/flash_img.jpg'
+import Pagination from './Pagination'
+import Button from './Button'
+// import BgImg from '../assets/flash_img.jpg'
 
+const PAGE_SIZE = 9
 const API_KEY = import.meta.env.VITE_API_KEY
-// const BASE_IMG_URL = `https://image.tmdb.org/t/p/`
-// const BACKDROP_SIZE = `w1280`
+const BASE_IMG_URL = `https://image.tmdb.org/t/p/`
+const BACKDROP_SIZE = `w1280`
 
 const SearchBar = ({ onAddMovie }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [loading, setLoading] = useState(false)
-  // const [image, setImage] = useState('')
+  const [image, setImage] = useState('')
+  const [page, setPage] = useState(1)
+  const pageCount = searchResults.length / PAGE_SIZE
+  const steps = page * PAGE_SIZE - PAGE_SIZE
 
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         await axios
           .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
           .then((response) => {
             console.log(response?.data?.results[0]?.backdrop_path)
-            setImage(response?.data?.results[0]?.backdrop_path)
+            const randomIndex = Math.floor(
+              Math.random() * response.data.results.length
+            )
+            const randomMovie = response?.data?.results[randomIndex]
+            // console.log(randomMovie.backdrop_path)
+            setImage(randomMovie?.backdrop_path)
           })
       } catch (error) {
         console.log(error)
       }
     }
     fetchData()
-  }, [])*/
+  }, [])
 
   const handleSearch = async (e) => {
     const query = e.target.value
@@ -63,8 +75,15 @@ const SearchBar = ({ onAddMovie }) => {
 
   return (
     <section
-      style={{ '--image-url': `url(${BgImg})` }}
-      className={`flex flex-col h-[100vh] w-full p-4 items-center justify-start bg-[image:var(--image-url)] bg-no-repeat bg-cover bg-center`}>
+      style={{
+        '--image-url': `url(${BASE_IMG_URL}${BACKDROP_SIZE}${image})`,
+        background:
+          'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), var(--image-url)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+      className={`flex flex-col h-[100vh] w-full p-4 items-center justify-start`}>
       {loading && (
         <div className='absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg'>
           <Loader />
@@ -83,7 +102,7 @@ const SearchBar = ({ onAddMovie }) => {
       <div className='flex flex-col border-2 border-white rounded-md lg:w-1/2 w-full m-2 p-2 bg-black text-white'>
         <ul>
           {searchResults && searchResults.length > 0 ? (
-            searchResults.map((item, i) => (
+            searchResults.slice(steps, steps + PAGE_SIZE).map((item, i) => (
               <li key={i}>
                 <MovieCard
                   title={item.title}
@@ -103,6 +122,22 @@ const SearchBar = ({ onAddMovie }) => {
             <p>No Movies Found</p>
           )}
         </ul>
+        <div className='flex w-full items-center justify-center'>
+          {searchResults.length > 2 && (
+            <Pagination>
+              <Button
+                disabled={page <= 1}
+                onClick={() => setPage((prev) => prev - 1)}
+                icon={<FaChevronLeft />}
+              />
+              <Button
+                disabled={page >= pageCount}
+                onClick={() => setPage((prev) => prev + 1)}
+                icon={<FaChevronRight />}
+              />
+            </Pagination>
+          )}
+        </div>
       </div>
     </section>
   )
