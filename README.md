@@ -66,7 +66,7 @@ src/
 1. Clone the repository:
 
 ```
-git clone <https://github.com/kuicpet/moviesListApp>
+git clone https://github.com/kuicpet/moviesListApp
 ```
 
 2. Install the dependencies:
