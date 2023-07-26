@@ -87,7 +87,7 @@ const MovieList = () => {
           <ToggleSwitch
             checked={showMatchedMovies}
             onChange={handleWatchedMovies}
-            text={showMatchedMovies ? 'Watched Movies' : 'Show Watched Movies'}
+            text={showMatchedMovies ? 'Show Watched Movies' : 'Show Watched Movies'}
           />
         )}
       </div>

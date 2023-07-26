@@ -10,7 +10,7 @@ const Header = () => {
       <NavLink
         style={({ isActive }) => ({ color: isActive ? 'white' : 'gray' })}
         to={`/movie-list`}
-        className='font-semibold px-4 hover:text-black'>
+        className='font-semibold px-4 hover:text-white'>
         MovieList
       </NavLink>
     </header>
