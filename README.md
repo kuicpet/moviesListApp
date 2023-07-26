@@ -17,6 +17,8 @@ The MovieList App is a web application that allows users to search for movies us
 - Zustand: A small, fast state management library for React applications.
 - Axios: A popular library for making HTTP requests.
 - The Movie Database (TMDb) API: A public API for retrieving movie data.
+- TaltwindCss : A utility-first CSS framework
+- React-icons : An icon library for popular icons.
 
 ### Folder Structure
 
