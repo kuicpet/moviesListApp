@@ -3,6 +3,10 @@ import { persist } from 'zustand/middleware'
 
 const movieStore = (set) => ({
   moviesList: [],
+  searchQuery: '',
+  searchResults: [],
+  setSearchResults: (results) => set({ searchResults: results }),
+  setSearchQuery: (query) => set({ searchQuery: query }),
   addToMoviesList: (movie) =>
     set((state) => ({ moviesList: [movie, ...state.moviesList] })),
   removeFromMovieList: (movie) =>

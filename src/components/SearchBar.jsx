@@ -8,17 +8,23 @@ import Loader from './Loader'
 import Pagination from './Pagination'
 import Button from './Button'
 import { API_KEY, BASE_IMG_URL, BACKDROP_SIZE } from '../config'
+import Error from './Error'
+import useMovieStore from '../store/movieStore'
 
 // Constants
 const PAGE_SIZE = 8
 
 const SearchBar = ({ onAddMovie }) => {
-  // useState Variables
-  const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  // Store State
+  const { searchQuery, setSearchQuery, searchResults, setSearchResults } =
+    useMovieStore()
+  
+    // useState Variables
+
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState('')
   const [page, setPage] = useState(1)
+  const [error, setError] = useState(false)
 
   // Pagination
   const pageCount = searchResults.length / PAGE_SIZE
@@ -31,7 +37,7 @@ const SearchBar = ({ onAddMovie }) => {
         await axios
           .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
           .then((response) => {
-            console.log(response?.data?.results[0]?.backdrop_path)
+            // console.log(response?.data?.results[0]?.backdrop_path)
             const randomIndex = Math.floor(
               Math.random() * response.data.results.length
             )
@@ -53,6 +59,7 @@ const SearchBar = ({ onAddMovie }) => {
     if (query.trim() !== '') {
       try {
         setLoading(true)
+        setError(false)
         await axios
           .get(
             `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
@@ -61,9 +68,11 @@ const SearchBar = ({ onAddMovie }) => {
             // console.log(response)
             setSearchResults(response?.data?.results)
             setLoading(false)
+            setError(false)
           })
       } catch (error) {
         console.log(error)
+        setError(true)
       } finally {
         setLoading(false)
       }
@@ -76,6 +85,14 @@ const SearchBar = ({ onAddMovie }) => {
   const handleAddToMovieList = (movie) => {
     onAddMovie(movie)
   }
+
+  // Handle page reload on error
+  useEffect(() => {
+    if (error) {
+      const reloadPage = () => window.location.reload()
+      setTimeout(reloadPage, 3000) // Reload the page after 3 seconds
+    }
+  }, [error])
 
   return (
     <section
@@ -91,6 +108,11 @@ const SearchBar = ({ onAddMovie }) => {
       {loading && (
         <div className='absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg'>
           <Loader />
+        </div>
+      )}
+      {error && (
+        <div>
+          <Error />
         </div>
       )}
       <div className='flex lg:w-1/2 w-full items-center justify-center border-2 border-white px-3 rounded-md sticky top-0 bg-black'>

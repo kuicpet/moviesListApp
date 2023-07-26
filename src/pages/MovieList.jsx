@@ -28,7 +28,7 @@ const MovieList = () => {
           .then((response) => {
             // console.log(response?.data?.results[0]?.backdrop_path)
             const randomIndex = Math.floor(
-              Math.random() * response.data.results.length
+              Math.random() * response?.data?.results.length
             )
             const randomMovie = response?.data?.results[randomIndex]
             // console.log(randomMovie.backdrop_path)
@@ -41,13 +41,6 @@ const MovieList = () => {
     fetchData()
   }, [])
 
-  // useEffect hook to verify movielist in state && localstorage
-  useEffect(() => {
-    if (moviesList.length > 0) {
-      return moviesList
-    }
-  })
-
   // Function to remove movie from movielist
   const removeMovie = (movie) => {
     removeFromMovieList(movie)
@@ -58,7 +51,7 @@ const MovieList = () => {
     toggleWatched(movie)
   }
 
-// Function to show movies marked as watched or not using state
+  // Function to show movies marked as watched or not using state
   const handleWatchedMovies = () => {
     setShowMatchedMovies(!showMatchedMovies)
   }
