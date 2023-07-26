@@ -53,21 +53,20 @@ src/
   |- config.js
   |- main.jsx
   |- index.css
-  |- index.js
 ```
 
 - `components/`: Contains reusable UI components used throughout the app.
 - `pages/`: Contains individual page components for the app.
 - `store/`: Contains the Zustand store and its related actions and state.
 - `App.js`: The main component that handles routing and rendering of different pages.
-- `index.js`: The entry point of the application.
+- `main.jsx`: The entry point of the application.
 
 ### Usage
 
 1. Clone the repository:
 
 ```
-git clone <repository-url>
+git clone <https://github.com/kuicpet/moviesListApp>
 ```
 
 2. Install the dependencies:
