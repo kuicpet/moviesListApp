@@ -45,7 +45,7 @@ const Movie = () => {
       )}
       <BreadCrumb movieTitle={movie ? movie.title : ''} />
       <div className='flex lg:flex-row flex-col w-full'>
-        <div className='flex  items-center justify-center m-1 lg:w-1/2 w-full p-2'>
+        <div className='flex  items-center justify-center m-1 lg:w-1/2 w-fuls p-2'>
           <img
             src={
               movie.poster_path ? `${BASE_IMG_URL}${POSTER_SIZE}${movie.poster_path}` : null

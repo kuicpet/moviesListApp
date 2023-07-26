@@ -81,7 +81,7 @@ const MovieList = () => {
       <div className='flex lg:flex-row md:flex-row  lg:w-1/2 w-full items-center justify-between  py-2 px-3 rounded-md sticky top-0 bg-black border-2 text-white'>
         <span className='flex items-center justify-center'>
           <PiTelevisionSimpleDuotone className='text-xl mx-2' />
-          <h2 className='font-semibold'>MovieList</h2>
+          <h2 className='font-semibold'>Watch List</h2>
         </span>
         {filteredMoviesList && (
           <ToggleSwitch
@@ -117,7 +117,7 @@ const MovieList = () => {
                 </li>
               ))
           ) : (
-            <p>No Movies in MovieList</p>
+            <p>No Movies in your Watch List</p>
           )}
         </ul>
         <div className='flex w-full items-center justify-center'>

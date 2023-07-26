@@ -11,7 +11,7 @@ const Header = () => {
         style={({ isActive }) => ({ color: isActive ? 'white' : 'gray' })}
         to={`/movie-list`}
         className='font-semibold px-4 hover:text-white'>
-        MovieList
+        Watch List
       </NavLink>
     </header>
   )
