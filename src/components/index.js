@@ -8,7 +8,6 @@ import Button from './Button'
 import ToggleSwitch from './ToggleSwitch'
 import Rating from './Rating'
 import BreadCrumb from './BreadCrumb'
-import Hero from './Hero'
 import Pagination from './Pagination'
 
 export {
@@ -22,6 +21,5 @@ export {
   ToggleSwitch,
   Rating,
   BreadCrumb,
-  Hero,
   Pagination,
 }

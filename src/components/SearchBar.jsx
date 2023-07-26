@@ -8,19 +8,23 @@ import Loader from './Loader'
 import Pagination from './Pagination'
 import Button from './Button'
 import { API_KEY, BASE_IMG_URL, BACKDROP_SIZE } from '../config'
-// import BgImg from '../assets/flash_img.jpg'
 
+// Constants
 const PAGE_SIZE = 8
 
 const SearchBar = ({ onAddMovie }) => {
+  // useState Variables
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState('')
   const [page, setPage] = useState(1)
+
+  // Pagination
   const pageCount = searchResults.length / PAGE_SIZE
   const steps = page * PAGE_SIZE - PAGE_SIZE
 
+  // UseEffect hook to fetch random images
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,6 +46,7 @@ const SearchBar = ({ onAddMovie }) => {
     fetchData()
   }, [])
 
+  // Function to search for movies by title
   const handleSearch = async (e) => {
     const query = e.target.value
     setSearchQuery(query)
@@ -53,7 +58,7 @@ const SearchBar = ({ onAddMovie }) => {
             `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
           )
           .then((response) => {
-            console.log(response)
+            // console.log(response)
             setSearchResults(response?.data?.results)
             setLoading(false)
           })
@@ -67,6 +72,7 @@ const SearchBar = ({ onAddMovie }) => {
     }
   }
 
+  // Function to add movie to movie list
   const handleAddToMovieList = (movie) => {
     onAddMovie(movie)
   }

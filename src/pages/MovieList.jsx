@@ -13,12 +13,13 @@ const PAGE_SIZE = 2
 const MovieList = () => {
   const { moviesList, removeFromMovieList, toggleWatched, rateMovie } =
     useMovieStore()
-  const [showMatchedMovies, seTshowMatchedMovies] = useState(false)
+  const [showMatchedMovies, setShowMatchedMovies] = useState(false)
   const [page, setPage] = useState(1)
   const [image, setImage] = useState('')
   const pageCount = moviesList.length / PAGE_SIZE
   const steps = page * PAGE_SIZE - PAGE_SIZE
 
+  // useEffect hook to fetch random images
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,22 +40,35 @@ const MovieList = () => {
     }
     fetchData()
   }, [])
+
+  // useEffect hook to verify movielist in state && localstorage
+  useEffect(() => {
+    if (moviesList.length > 0) {
+      return moviesList
+    }
+  })
+
+  // Function to remove movie from movielist
   const removeMovie = (movie) => {
     removeFromMovieList(movie)
   }
 
+  // Function to mark movies watched
   const markedAsWatched = (movie) => {
     toggleWatched(movie)
   }
 
+// Function to show movies marked as watched or not using state
   const handleWatchedMovies = () => {
-    seTshowMatchedMovies(!showMatchedMovies)
+    setShowMatchedMovies(!showMatchedMovies)
   }
 
+  // Function to add rating to movie
   const handleAddRating = (movie, newRating) => {
     rateMovie(movie, newRating)
   }
 
+  // Function to filter movielist based on movies watched or not
   const filteredMoviesList = showMatchedMovies
     ? moviesList.filter((movie) => movie.watched)
     : moviesList

@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 
 const Rating = ({ initialRating, onChange }) => {
+  // useState variables
   const [rating, setRating] = useState(initialRating)
+  // Function to handle rating
   const handleRatingChange = (newRating) => {
     setRating(newRating)
     onChange(newRating)

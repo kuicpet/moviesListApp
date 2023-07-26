@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 const ToggleSwitch = ({ checked, onChange, text }) => {
+  // Function to toggle switch
   const handleChange = (e) => {
     if (onChange) {
       onChange(e.target.checked)

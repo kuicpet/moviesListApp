@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
+
 const BreadCrumb = ({ movieTitle }) => {
   return (
     <section className='flex items-center justify-start p-2'>

@@ -3,6 +3,7 @@ import { SearchBar } from '../components'
 import useMovieStore from '../store/movieStore'
 
 const Home = () => {
+  // Store state
   const { addToMoviesList, moviesList } = useMovieStore()
 
   // add movies to movielist

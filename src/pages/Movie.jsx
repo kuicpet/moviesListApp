@@ -6,10 +6,13 @@ import { formatTimestamp } from '../utils/formatTime'
 import { API_KEY, BASE_IMG_URL, POSTER_SIZE } from '../config'
 
 const Movie = () => {
+  // useParams to fetch data
   const { slug } = useParams()
+  // useState variables
   const [movie, setMovie] = useState({})
   const [loading, setLoading] = useState(false)
 
+  // useEffect hook to fetch data for a sinle movie using title or slug
   useEffect(() => {
     const fetchMovie = async () => {
       try {

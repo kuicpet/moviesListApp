@@ -19,7 +19,9 @@ const MovieCard = ({
   //  movieId,
   slug,
 }) => {
+  // Store
   const { moviesList } = useMovieStore()
+  // Function to show movie added to movielist and modify the styling
   const isAdded = moviesList.some((m) => m.title === title)
 
   return (
