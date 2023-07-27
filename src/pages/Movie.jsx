@@ -59,10 +59,10 @@ const Movie = () => {
           <h1 className='font-semibold text-3xl'>{movie.title}</h1>
           <h3 className='mx-2 mt-3 font-semibold'>Overview</h3>
           <p className='m-2 text-[gray]'>{movie.overview}</p>
-          <p className='mx-2 text-sm'>
+          <p className='mx-2 text-sm w-full'>
             Released: {formatTimestamp(movie.release_date)}
           </p>
-          <p className='mx-2'>Rating: {movie.vote_average / 2}</p>
+          <p className='mx-2 w-full'>Rating: {movie.vote_average / 2}</p>
         </div>
       </div>
     </section>
