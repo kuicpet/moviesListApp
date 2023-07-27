@@ -51,7 +51,7 @@ src/
   |- App.jsx
   |- App.css
   |- config.js
-  |- main.jsx
+  |- index.jsx
   |- index.css
 ```
 
@@ -59,7 +59,7 @@ src/
 - `pages/`: Contains individual page components for the app.
 - `store/`: Contains the Zustand store and its related actions and state.
 - `App.js`: The main component that handles routing and rendering of different pages.
-- `main.jsx`: The entry point of the application.
+- `index.jsx`: The entry point of the application.
 
 ### Usage
 
