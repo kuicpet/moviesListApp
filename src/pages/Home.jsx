@@ -13,9 +13,18 @@ const Home = () => {
     )
     if (!existingMovie) {
       addToMoviesList(movie)
-      toast.success(`${movie.title} added to MovieList successfully`)
+      toast.success(`${movie.title} added to MovieList successfully`, {
+        style: {
+          backgroundColor: '#e0f5e6',
+        },
+      })
     } else {
-      toast.error(`${movie.title} already added to MovieList`)
+      toast.error(`${movie.title} already added to MovieList`, {
+        style: {
+          color: 'red',
+          backgroundColor: '#ffebee'
+        }
+      })
       return
     }
   }
